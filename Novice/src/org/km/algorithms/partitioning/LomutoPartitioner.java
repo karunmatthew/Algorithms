@@ -4,10 +4,10 @@ public class LomutoPartitioner {
 
 	public static void main(String[] args) {
 
-		int A[] = { 4, 0, 3, 2, 7 };
+		int A[] = { 4, 0, 4, 3, 2, 0, 7 };
 
-		System.out.println(quickSelect(A, 0, A.length - 1, 4));
-		// quickSort(A, 0, A.length - 1);
+		// System.out.println(quickSelect(A, 0, A.length - 1, 4));
+		quickSort(A, 0, A.length - 1);
 		for (int entry : A) {
 			System.out.print(entry + " ");
 		}
@@ -26,10 +26,10 @@ public class LomutoPartitioner {
 	public static int quickSelect(int[] A, int lo, int hi, int k) {
 
 		int pos = partition(A, lo, hi);
-		if (pos - lo + 1 == k) {
+		if (pos - lo == k - 1 ) {
 			return A[pos];
-		} else if (pos - lo + 1 <= k) {
-			return quickSelect(A, pos + 1, hi, k - (pos - lo + 1));
+		} else if (pos - lo <= k - 1 ) {
+			return quickSelect(A, pos + 1, hi, (k - 1) - (pos - lo));
 		} else {
 			return quickSelect(A, lo, pos - 1, k);
 		}
